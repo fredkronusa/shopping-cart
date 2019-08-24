@@ -1,11 +1,11 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import Cart from './Cart'
-import Product from './Product'
+import Product from '../product/Product'
 
 const setup = (total, products = []) => {
   const actions = {
-    onCheckoutClicked: jest.fn()
+    onApplyDiscountClicked: jest.fn()
   }
 
   const component = shallow(
@@ -67,7 +67,7 @@ describe('Cart component', () => {
     it('should call action on button click', () => {
       const { button, actions } = setup('9.99', product)
       button.simulate('click')
-      expect(actions.onCheckoutClicked).toBeCalled()
+      expect(actions.onApplyDiscountClicked).toBeCalled()
     })
   })
 })

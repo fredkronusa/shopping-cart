@@ -1,0 +1,26 @@
+.product {
+  display: flex;
+  width: 70%;
+  line-height: 1;
+  div {
+    padding-right: 30px;
+    justify-content: space-between;
+    width: 100%;
+    &.image {
+      max-width: 30px;
+    }
+    &.price {
+      text-align: right;
+      line-height: 30px;
+    }
+    &.title {
+      line-height: 30px;
+    }
+  }
+  img {
+    width: 30px;
+    height: 30px;
+
+  }
+
+}

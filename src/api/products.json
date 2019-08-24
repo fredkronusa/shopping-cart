@@ -1,5 +1,5 @@
 [
-  {"id": "wf", "title": "Workflow", "price": 199.99, "inventory": 2},
-  {"id": "docgen", "title": "Document Generation", "price": 9.99, "inventory": 10},
-  {"id": "form", "title": "Form", "price": 99.99, "inventory": 5}
+  {"id":1, "productCode": "wf", "title": "Workflow", "price": 199.99, "inventory": 2},
+  {"id":2, "productCode": "docgen", "title": "Document Generation", "price": 9.99, "inventory": 10},
+  {"id":3, "productCode": "form", "title": "Form", "price": 99.99, "inventory": 5}
 ]

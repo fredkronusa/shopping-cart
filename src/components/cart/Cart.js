@@ -1,14 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Product from './Product'
+import Product from '../product/Product'
+//import { useState } from 'react';
 
-const Cart  = ({ products, total, onCheckoutClicked }) => {
+const Cart  = ({ products, total, onApplyDiscountClicked }) => {
   const hasProducts = products.length > 0
+  //const [setdiscountCode] = useState('');
   const nodes = hasProducts ? (
     products.map(product =>
       <Product
         title={product.title}
         price={product.price}
+        discountPrice={product.discountPrice}
+        productCode={product.productCode}
         quantity={product.quantity}
         key={product.id}
       />
@@ -16,15 +20,16 @@ const Cart  = ({ products, total, onCheckoutClicked }) => {
   ) : (
     <em>Please add some products to cart.</em>
   )
+      //<input defaultValue={discountCode} placeholder='enter discount' onInput={e => setdiscountCode(e.target.value)}/>
 
   return (
     <div>
       <h3>Your Cart</h3>
       <div>{nodes}</div>
       <p>Total: &#36;{total}</p>
-      <button onClick={onCheckoutClicked}
+      <button onClick={onApplyDiscountClicked}
         disabled={hasProducts ? '' : 'disabled'}>
-        Checkout
+        Apply Discount
       </button>
     </div>
   )
@@ -33,7 +38,7 @@ const Cart  = ({ products, total, onCheckoutClicked }) => {
 Cart.propTypes = {
   products: PropTypes.array,
   total: PropTypes.string,
-  onCheckoutClicked: PropTypes.func
+  onApplyDiscountClicked: PropTypes.func
 }
 
 export default Cart

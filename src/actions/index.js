@@ -12,29 +12,51 @@ export const getAllProducts = () => dispatch => {
   })
 }
 
-const addToCartUnsafe = productId => ({
-  type: types.ADD_TO_CART,
-  productId
+const receiveDiscounts = discounts => ({
+  type: types.RECEIVE_DISCOUNTS,
+  discounts
 })
 
-export const addToCart = productId => (dispatch, getState) => {
-  if (getState().products.byId[productId].inventory > 0) {
-    dispatch(addToCartUnsafe(productId))
-  }
+export const getAllDiscounts = () => dispatch => {
+  shop.getDiscounts(discounts => {
+    dispatch(receiveDiscounts(discounts))
+  })
 }
 
-export const checkout = products => (dispatch, getState) => {
-  const { cart } = getState()
+export const addToCart = productId => (dispatch, getState) => {
+  dispatch({
+    type: types.ADD_TO_CART,
+    productId
+  })
+}
+
+export const applyDiscount = (products) => (dispatch, getState) => {
+ const { cart } = getState()
 
   dispatch({
     type: types.CHECKOUT_REQUEST
   })
+
+  dispatch({
+    type: types.APPLY_DISCOUNT,
+    products,
+    cart
+  })
+
   shop.buyProducts(products, () => {
     dispatch({
-      type: types.CHECKOUT_SUCCESS,
+      type: types.CHECKOUT_FAILURE,
+      cart,
+      products
+    })
+    dispatch({
+      type: types.APPLY_DISCOUNT,
+      products,
       cart
     })
+  })
+
     // Replace the line above with line below to rollback on failure:
     // dispatch({ type: types.CHECKOUT_FAILURE, cart })
-  })
+ // })
 }

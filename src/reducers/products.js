@@ -1,12 +1,25 @@
 import { combineReducers } from 'redux'
-import { RECEIVE_PRODUCTS, ADD_TO_CART } from '../constants/ActionTypes'
+import { RECEIVE_PRODUCTS, ADD_TO_CART, APPLY_DISCOUNT } from '../constants/ActionTypes'
 
 const products = (state, action) => {
   switch (action.type) {
     case ADD_TO_CART:
       return {
         ...state,
-        inventory: state.inventory - 1
+        inventory: state.inventory - 1,
+      }
+    default:
+      return state
+  }
+}
+
+const discountPrice = (state = [], action) => {
+
+  switch (action.type) {
+    case APPLY_DISCOUNT:
+      return {
+        ...state,
+        ...action.products.forEach((obj) => {obj.discountPrice= 5})
       }
     default:
       return state
@@ -46,7 +59,8 @@ const visibleIds = (state = [], action) => {
 
 export default combineReducers({
   byId,
-  visibleIds
+  visibleIds,
+  discountPrice
 })
 
 export const getProduct = (state, id) =>
@@ -54,3 +68,6 @@ export const getProduct = (state, id) =>
 
 export const getVisibleProducts = state =>
   state.visibleIds.map(id => getProduct(state, id))
+
+export const getDiscount = state =>
+  state.discount.map(id => getProduct(state, id))

@@ -1,0 +1,7 @@
+
+[
+  { "id": "RRD4D32",   "discountPercentage": 10, "productId": null,   "minOder": 1000,  "minQuantity": 0 },
+  { "id": "44F4T11",   "discountPercentage": 15, "productId": null,   "minOder": 1500,  "minQuantity": 0 },
+  { "id": "FF9543D1",  "discountPercentage": 0,  "productId": 2,      "minOder": 0,     "minQuantity": 10 },
+  { "id": "YYGWKJD",   "discountPercentage": 0,  "productId": 3, "minOder": 0,     "minQuantity": 1 },
+]

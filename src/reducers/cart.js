@@ -6,8 +6,20 @@ import {
 
 const initialState = {
   addedIds: [],
-  quantityById: {}
+  quantityById: {},
 }
+
+// const discountCode = (state = initialState, action) => {
+//   switch (action.type) {
+//     case CHECKOUT_FAILURE:
+//       if (!state.indexOf(action.discountCode)) {
+//         return state
+//       }
+//       return [ ...state, action.discountCode ]
+//     default:
+//       return state
+//   }
+// }
 
 const addedIds = (state = initialState.addedIds, action) => {
   switch (action.type) {
@@ -38,16 +50,19 @@ export const getQuantity = (state, productId) =>
 
 export const getAddedIds = state => state.addedIds
 
+//export const getDiscountCode = state => state.discountCode
+
 const cart = (state = initialState, action) => {
   switch (action.type) {
     case CHECKOUT_REQUEST:
       return initialState
     case CHECKOUT_FAILURE:
-      return action.cart
+      return  action.cart
     default:
       return {
         addedIds: addedIds(state.addedIds, action),
-        quantityById: quantityById(state.quantityById, action)
+        quantityById: quantityById(state.quantityById, action),
+        //discountCode: discountCode(state.discountCode, action)
       }
   }
 }

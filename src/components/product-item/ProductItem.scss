@@ -1,0 +1,16 @@
+.product-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border: 1px solid  #03161e;
+  margin-top: 15px;
+  padding: 15px;
+  line-height: 30px;
+
+  button {
+    background-color: #ff6d00;
+    color: #fff;
+    font-size: 14px;
+    height: 30px;
+  }
+}
